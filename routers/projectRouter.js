@@ -22,6 +22,21 @@ router.get('/:id', validateProjectId, async (req, res) => {
   res.status(200).json(req.project);
 });
 
+router.get('/:id/actions', validateProjectId, async (req, res) => {
+  try {
+    projectDb.getProjectActions(req.params.id)
+      .then((actions) => {
+        if (actions.length !== 0) res.status(200).json(actions);
+        else res.status(200).json({ message: 'There are no actions with this specific project id' });
+      });
+  } catch (err) {
+    res.status(500).json({
+      error: 'The actions for project could not be retrieved',
+      message: err.message,
+    });
+  }
+});
+
 router.post('/', validateProject, async (req, res) => {
   try {
     await projectDb.insert(req.project)
