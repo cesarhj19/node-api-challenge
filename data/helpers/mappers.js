@@ -1,3 +1,5 @@
+/* eslint-disable no-unneeded-ternary */
+/* eslint-disable no-use-before-define */
 module.exports = {
   intToBoolean,
   booleanToint,
@@ -20,7 +22,7 @@ function projectToBody(project) {
   };
 
   if (project.actions) {
-    result.actions = project.actions.map(action => ({
+    result.actions = project.actions.map((action) => ({
       ...action,
       completed: intToBoolean(action.completed),
     }));

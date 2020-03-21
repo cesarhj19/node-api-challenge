@@ -1,3 +1,5 @@
+/* eslint-disable space-before-function-paren */
+/* eslint-disable func-names */
 exports.seed = function(knex) {
   return knex('actions').insert([
     {
